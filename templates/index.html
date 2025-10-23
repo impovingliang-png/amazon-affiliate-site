@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon 比價網站</title>
+  <meta name="description" content="比價 Amazon 商品和台灣本地電商價格，幫你找到最划算的商品">
+</head>
+<body>
+  <h1>Amazon 比價平台</h1>
+
+  {% for product in products %}
+    <div>
+      <h2>{{ product.name }}</h2>
+      <img src="{{ product.image }}" alt="{{ product.name }}" width="150">
+      <p>Amazon 價格: ${{ product.amazon_price }}</p>
+      <p>台灣本地價格: ${{ product.local_price }}</p>
+      <a href="{{ product.amazon_url }}">前往 Amazon 查看</a>
+    </div>
+    <hr>
+  {% endfor %}
+</body>
+</html>
