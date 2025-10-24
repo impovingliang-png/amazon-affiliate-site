@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amazon 比價網站</title>
-  <meta name="description" content="比價 Amazon 商品和台灣本地電商價格，幫你找到最划算的商品">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的第一個 Flask 網站</title>
+
+    <!-- Google Search Console 驗證 -->
+    <meta name="google-site-verification" content="你的驗證碼" />
+
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        .product { margin-bottom: 20px; }
+        .product img { max-width: 200px; display: block; }
+    </style>
 </head>
 <body>
-  <h1>Amazon 比價平台</h1>
+    <h1>你好，Flask！</h1>
+    <p>這是你的第一個網站，未來要幫你推亞馬遜商品 😎</p>
 
-  {% for product in products %}
-    <div>
-      <h2>{{ product.name }}</h2>
-      <img src="{{ product.image }}" alt="{{ product.name }}" width="150">
-      <p>Amazon 價格: ${{ product.amazon_price }}</p>
-      <p>台灣本地價格: ${{ product.local_price }}</p>
-      <a href="{{ product.amazon_url }}">前往 Amazon 查看</a>
-    </div>
-    <hr>
-  {% endfor %}
+    {% if products %}
+        {% for product in products %}
+            <div class="product">
+                <h2>{{ product.name }}</h2>
+                <a href="{{ product.amazon_url }}" target="_blank">
+                    <img src="{{ product.image }}" alt="{{ product.name }}">
+                </a>
+                <p>Amazon 價格: ${{ product.amazon_price }}</p>
+                <p>本地價格: NT${{ product.local_price }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
